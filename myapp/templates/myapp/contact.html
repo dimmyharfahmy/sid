@@ -1,0 +1,144 @@
+{% extends 'myapp/base.html' %}
+{% load static %}
+
+{% block title %}Contact - Sedekah Inovasi Digital{% endblock %}
+
+{% block content %}
+
+    <!-- Overlay Start -->
+    <div class="overlay"></div>
+    <!-- Overlay End -->
+
+        <!-- Page Banner Start -->
+        <div class="section page-banner">
+            <img class="shape-1 animation-round" src="{% static 'myapp/images/shape/shape-8.png' %}" alt="Shape">
+            <img class="shape-2" src="{% static 'myapp/images/shape/shape-23.png' %}" alt="Shape">
+
+            <div class="container">
+                <div class="page-banner-content">
+                    <ul class="breadcrumb">
+                        <li><a href="{% url 'home' %}">Home</a></li>
+                        <li class="active">Contact Us</li>
+                    </ul>
+                    <h2 class="title">Contact <span>Us</span></h2>
+                </div>
+            </div>
+
+            <div class="shape-icon-box">
+                <img class="icon-shape-1 animation-left" src="{% static 'myapp/images/shape/shape-5.png' %}" alt="Shape">
+                <div class="box-content">
+                    <div class="box-wrapper">
+                        <i class="flaticon-badge"></i>
+                    </div>
+                </div>
+                <img class="icon-shape-2" src="{% static 'myapp/images/shape/shape-6.png' %}" alt="Shape">
+            </div>
+
+            <img class="shape-3" src="{% static 'myapp/images/shape/shape-24.png' %}" alt="Shape">
+            <img class="shape-author" src="{% static 'myapp/images/author/author-11.jpg' %}" alt="Shape">
+        </div>
+        <!-- Page Banner End -->
+
+        <!-- Contact Map Start -->
+        <div class="section section-padding-02">
+            <div class="container">
+
+                <!-- Contact Map Wrapper Start -->
+                <div class="contact-map-wrapper">
+                    <iframe id="gmap_canvas" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15841.94268750441!2d107.6243728!3d-6.951894!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e94450c8070d%3A0x1ce69acd8ab203be!2sYayasan%20Sedekah%20Inovasi%20Digital!5e0!3m2!1sid!2sid!4v1716703765648!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <!-- Contact Map Wrapper End -->
+
+            </div>
+        </div>
+        <!-- Contact Map End -->
+
+        <!-- Contact Start -->
+        <div class="section section-padding">
+            <div class="container">
+                <div class="contact-wrapper">
+                    <div class="row align-items-center">
+                        <div class="col-lg-6">
+                            <div class="contact-info">
+                                <img class="shape animation-round" src="{% static 'myapp/images/shape/shape-12.png' %}" alt="Shape">
+                                <div class="single-contact-info">
+                                    <div class="info-icon">
+                                        <i class="flaticon-phone-call"></i>
+                                    </div>
+                                    <div class="info-content">
+                                        <h6 class="title">Phone No.</h6>
+                                        <p><a href="tel:6281218887742">(62) 812 1888 7742</a></p>
+                                    </div>
+                                </div>
+                                <div class="single-contact-info">
+                                    <div class="info-icon">
+                                        <i class="flaticon-email"></i>
+                                    </div>
+                                    <div class="info-content">
+                                        <h6 class="title">Email Address.</h6>
+                                        <p><a href="mailto:cs@sidfoundation.or.id">cs@sidfoundation.or.id</a></p>
+                                    </div>
+                                </div>
+                                <div class="single-contact-info">
+                                    <div class="info-icon">
+                                        <i class="flaticon-pin"></i>
+                                    </div>
+                                    <div class="info-content">
+                                        <h6 class="title">Office Address.</h6>
+                                        <p>Jl. Waas A No.13. Batununggal. Bandung</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="contact-form">
+                                <h3 class="title">Get in Touch <span>With Us</span></h3>
+                                <div class="form-wrapper">
+                                    {% if messages %}
+                                    <div id="messages">
+                                        {% for message in messages %}
+                                        <div class="alert alert-success">
+                                            {{ message }}
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                    {% endif %}
+                                    <form method="post" action="{% url 'contact' %}">
+                                        {% csrf_token %}
+                                        <div class="single-form">
+                                            {{ form.name }}
+                                        </div>
+                                        <div class="single-form">
+                                            {{ form.email }}
+                                        </div>
+                                        <div class="single-form">
+                                            {{ form.subject }}
+                                        </div>
+                                        <div class="single-form">
+                                            {{ form.message }}
+                                        </div>
+                                        <p class="form-message"></p>
+                                        <div class="single-form">
+                                            <button class="btn btn-primary btn-hover-dark w-100" type="submit">Send Message <i class="flaticon-right"></i></button>
+                                        </div>
+                                    </form>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Contact End -->
+
+{% endblock %}
+<script>
+    $(document).ready(function(){
+        if ($('#messages .alert').length > 0) {
+            setTimeout(function(){
+                $('#messages').fadeOut('slow');
+            }, 3000);  // Adjust the time as needed
+        }
+    });
+</script>

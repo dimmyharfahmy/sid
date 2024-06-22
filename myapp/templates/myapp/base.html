@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-X2RDY34Q0M"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-X2RDY34Q0M');
+    </script>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>{% block title %}Sedekah Inovasi Digital{% endblock %}</title>
+    <meta name="robots" content="noindex, follow" />
+    <meta name="description" content="Yayasan Sedekah Inovasi Digital menyediakan pelatihan IT gratis untuk masyarakat umum dan komunitas disabilitas di Indonesia. Meningkatkan literasi digital dan membantu peserta mendapatkan pekerjaan dengan keterampilan yang mumpuni.">
+<meta name="keywords" content="pelatihan IT gratis, literasi digital, pelatihan untuk disabilitas, kursus IT online, keterampilan digital, yayasan nonprofit, program pelatihan IT, kursus coding gratis, pelatihan kerja online, keterampilan digital untuk pekerjaan">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'myapp/images/favicon.ico' %}">
+    <!-- CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'myapp/css/plugins/icofont.min.css' %}">
+    <link rel="stylesheet" href="{% static 'myapp/css/plugins/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'myapp/css/plugins/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'myapp/css/plugins/animate.min.css' %}">
+    <link rel="stylesheet" href="{% static 'myapp/css/plugins/swiper-bundle.min.css' %}">
+    <link rel="stylesheet" href="{% static 'myapp/css/plugins/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'myapp/css/plugins/nice-select.css' %}">
+    <link rel="stylesheet" href="{% static 'myapp/css/plugins/apexcharts.css' %}">
+    <link rel="stylesheet" href="{% static 'myapp/css/plugins/jqvmap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'myapp/css/style.css' %}">
+</head>
+<body>
+    {% include 'myapp/header.html' %}
+    {% block content %}
+    {% endblock %}
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var errorMessages = document.getElementById("error-messages");
+            if (errorMessages && errorMessages.innerText.trim() !== "") {
+                alert(errorMessages.innerText.trim());
+            }
+        });
+    </script>
+    {% include 'myapp/footer.html' %}
+    <!-- JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{% static 'myapp/js/vendor/modernizr-3.11.2.min.js' %}"></script>
+    <script src="{% static 'myapp/js/vendor/jquery-3.5.1.min.js' %}"></script>
+    <script src="{% static 'myapp/js/plugins.min.js' %}"></script>
+    <script src="{% static 'myapp/js/main.js' %}"></script>
+</body>
+</html>

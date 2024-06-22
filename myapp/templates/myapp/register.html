@@ -1,0 +1,148 @@
+{% extends 'myapp/base.html' %}
+{% load form_extras %}
+{% load static %}
+
+
+{% block title %}Register - Sedekah Inovasi Digital{% endblock %}
+
+{% block content %}
+
+        <!-- Overlay Start -->
+        <div class="overlay"></div>
+        <!-- Overlay End -->
+
+        <!-- Page Banner Start -->
+        <div class="section page-banner">
+
+            <img class="shape-1 animation-round" src="{% static 'myapp/images/shape/shape-8.png' %}" alt="Shape">
+
+            <img class="shape-2" src="{% static 'myapp/images/shape/shape-23.png' %}" alt="Shape">
+
+            <div class="container">
+                <!-- Page Banner Start -->
+                <div class="page-banner-content">
+                    <ul class="breadcrumb">
+                        <li><a href="#">Home</a></li>
+                        <li class="active">Register</li>
+                    </ul>
+                    <h2 class="title">Registration <span>Form</span></h2>
+                </div>
+                <!-- Page Banner End -->
+            </div>
+
+            <!-- Shape Icon Box Start -->
+            <div class="shape-icon-box">
+
+                <img class="icon-shape-1 animation-left" src="{% static 'myapp/images/shape/shape-5.png' %}" alt="Shape">
+
+                <div class="box-content">
+                    <div class="box-wrapper">
+                        <i class="flaticon-badge"></i>
+                    </div>
+                </div>
+
+                <img class="icon-shape-2" src="{% static 'myapp/images/shape/shape-6.png' %}" alt="Shape">
+
+            </div>
+            <!-- Shape Icon Box End -->
+
+            <img class="shape-3" src="{% static 'myapp/images/shape/shape-24.png' %}" alt="Shape">
+
+            <img class="shape-author" src="{% static 'myapp/images/author/author-11.jpg' %}" alt="Shape">
+
+        </div>
+        <!-- Page Banner End -->
+
+        <!-- Register & Login Start -->
+        <div class="section section-padding">
+            <div class="container">
+
+                <!-- Register & Login Wrapper Start -->
+                <div class="register-login-wrapper">
+                    <div class="row align-items-center">
+                        <div class="col-lg-6">
+
+                            <!-- Register & Login Images Start -->
+                            <div class="register-login-images">
+                                <div class="shape-1">
+                                    <img src="{% static 'myapp/images/shape/shape-26.png' %}" alt="Shape">
+                                </div>
+
+
+                                <div class="images">
+                                    <img src="{% static 'myapp/images/register-login.png' %}" alt="Register Login">
+                                </div>
+                            </div>
+                            <!-- Register & Login Images End -->
+
+                        </div>
+                        <div class="col-lg-6">
+
+                            <!-- Register & Login Form Start -->
+                            <div class="register-login-form">
+                                <h3 class="title">Registration <span>Now</span></h3>
+
+                                <div class="form-wrapper">
+                                    <div id="messages">
+                                        {% if form.errors %}
+                                            <ul class="alert alert-danger">
+                                                {% for field, errors in form.errors.items %}
+                                                    <li>{{ field }}{% for error in errors %}
+                                                        <ul class="errorlist">
+                                                            <li>{{ error }}</li>
+                                                        </ul>
+                                                    {% endfor %}</li>
+                                                {% endfor %}
+                                            </ul>
+                                        {% endif %}
+                                    </div>
+                                    <form method="post" action="{% url 'register' %}">
+                                        {% csrf_token %}
+                                        <!-- Single Form Start -->
+                                        <div class="single-form">
+                                            {{ form.username|add_placeholder:"Name" }}
+                                        </div>
+                                        <!-- Single Form End -->
+                                        <!-- Single Form Start -->
+                                        <div class="single-form">
+                                            {{ form.email|add_placeholder:"Email" }}
+                                        </div>
+                                        <!-- Single Form End -->
+                                        <!-- Single Form Start -->
+                                        <div class="single-form">
+                                            {{ form.password1|add_placeholder:"Password" }}
+                                        </div>
+                                        <!-- Single Form End -->
+                                        <!-- Single Form Start -->
+                                        <div class="single-form">
+                                            {{ form.password2|add_placeholder:"Confirm Password" }}
+                                        </div>
+                                        <!-- Single Form End -->
+                                        <div class="single-form">
+                                            <button type="submit" class="btn btn-primary btn-hover-dark w-100">Create an account</button>
+                                        </div>
+                                    </form>
+                                    
+                                </div>
+                            </div>
+                            <!-- Register & Login Form End -->
+
+                        </div>
+                    </div>
+                </div>
+                <!-- Register & Login Wrapper End -->
+
+            </div>
+        </div>
+        <!-- Register & Login End -->
+
+
+{% endblock %}
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var errorMessages = document.getElementById("error-messages");
+        if (errorMessages && errorMessages.children.length > 0) {
+            alert(errorMessages.innerText);
+        }
+    });
+</script>

@@ -1,0 +1,194 @@
+{% extends 'myapp/base.html' %}
+{% load static %}
+
+{% block title %}Course_Detail - Sedekah Inovasi Digital{% endblock %}
+
+{% block content %}
+
+        <!-- Overlay Start -->
+        <div class="overlay"></div>
+        <!-- Overlay End -->
+
+        <!-- Page Banner Start -->
+        <div class="section page-banner">
+
+            <img class="shape-1 animation-round" src="{% static 'myapp/images/shape/shape-8.png' %}" alt="Shape">
+
+            <img class="shape-2" src="{% static 'myapp/images/shape/shape-23.png' %}" alt="Shape">
+
+            <div class="container">
+                <!-- Page Banner Start -->
+                <div class="page-banner-content">
+                    <ul class="breadcrumb">
+                        <li><a href="{% url 'home' %}">Home</a></li>
+                        <li class="active">Courses Details</li>
+                    </ul>
+                    <h2 class="title">{{ course.title }}</span></h2>
+                </div>
+                <!-- Page Banner End -->
+            </div>
+
+            <!-- Shape Icon Box Start -->
+            <div class="shape-icon-box">
+
+                <img class="icon-shape-1 animation-left" src="{% static 'myapp/images/shape/shape-5.png' %}" alt="Shape">
+
+                <div class="box-content">
+                    <div class="box-wrapper">
+                        <i class="flaticon-badge"></i>
+                    </div>
+                </div>
+
+                <img class="icon-shape-2" src="{% static 'myapp/images/shape/shape-6.png' %}" alt="Shape">
+
+            </div>
+            <!-- Shape Icon Box End -->
+
+            <img class="shape-3" src="{% static 'myapp/images/shape/shape-24.png' %}" alt="Shape">
+
+            <img class="shape-author" src="{% static 'myapp/images/author/author-11.jpg' %}" alt="Shape">
+
+        </div>
+        <!-- Page Banner End -->
+
+        <div class="section section-padding mt-n10">
+            <div class="container">
+                <div class="row gx-10">
+                    <div class="col-lg-8">
+                        <!-- Courses Details Start -->
+                        <div class="courses-details">
+                            <div class="courses-details-images">
+                                <img src="{{ course.course_image.url }}" alt="Courses Details">
+                                <span class="tags">{{ course.category }}</span>
+                                <div class="courses-play">
+                                    <img src="{% static 'myapp/images/courses/circle-shape.png' %}" alt="Play">
+                                    <a class="play video-popup" href="https://www.youtube.com/watch?v=Wif4ZkwC0AM"><i class="flaticon-play"></i></a>
+                                </div>
+                            </div>
+
+                            <h2 class="title">{{ course.title }}</h2>
+
+                            <div class="courses-details-admin">
+                                <div class="admin-author">
+                                    <div class="author-thumb">
+                                        <img src="{{ course.author_image.url }}" alt="Author">
+                                    </div>
+                                    <div class="author-content">
+                                        <a class="name" href="#">{{ course.author_name }}</a>
+                                        <span class="Enroll">{{ course.enrolled_students }} Enrolled</span>
+                                    </div>
+                                </div>
+                                <div class="admin-rating">
+                                    <span class="rating-count">{{ course.status }}</span>
+                                </div>
+                            </div>
+
+                            <div class="courses-details-tab">
+
+                                <!-- Details Tab Menu Start -->
+                                <div class="details-tab-menu">
+                                    <ul class="nav justify-content-center">
+                                        <li><button class="active" data-bs-toggle="tab" data-bs-target="#description">Description</button></li>
+                                        <li><button data-bs-toggle="tab" data-bs-target="#instructors">Instructors</button></li>
+                                    </ul>
+                                </div>
+                                <!-- Details Tab Menu End -->
+
+                                <!-- Details Tab Content Start -->
+                                <div class="details-tab-content">
+                                    <div class="tab-content">
+                                        <div class="tab-pane fade show active" id="description">
+
+                                            <!-- Tab Description Start -->
+                                            <div class="tab-description">
+                                                <div class="description-wrapper">
+                                                    <h3 class="tab-title">Description:</h3>
+                                                    <p>{{ course.description }}</p>
+                                                </div>
+                                                <div class="description-wrapper">
+                                                    <h3 class="tab-title">Curriculum:</h3>
+                                                    <p>{{ course.curriculum }}</p>
+                                                </div>
+                                            </div>
+                                            <!-- Tab Description End -->
+
+                                        </div>
+                                        <div class="tab-pane fade" id="instructors">
+
+                                            <!-- Tab Instructors Start -->
+                                            <div class="tab-instructors">
+                                                <h3 class="tab-title">Course Instructor:</h3>
+
+                                                <div class="row">
+                                                    <div class="col-md-3 col-6">
+                                                        <!-- Single Team Start -->
+                                                        <div class="single-team">
+                                                            <div class="team-thumb">
+                                                                <img src="{{ course.author_image.url }}" alt="Author">
+                                                            </div>
+                                                            <div class="team-content">
+                                                                <h4 class="name">{{ course.author_name }}</h4>
+                                                                <span class="designation">Instructor</span>
+                                                            </div>
+                                                        </div>
+                                                        <!-- Single Team End -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Tab Instructors End -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Details Tab Content End -->
+
+                            </div>
+                            <!-- Courses Details Tab End -->
+                        </div>
+                        <!-- Courses Details End -->
+                    </div>
+                    <div class="col-lg-4">
+                        <!-- Sidebar Widget Information Start -->
+                        <div class="sidebar-widget widget-information">
+                            <div class="info-price">
+                                <span class="price">{{ course.price }}</span>
+                            </div>
+                            <div class="info-list">
+                                <ul>
+                                    <li><i class="icofont-man-in-glasses"></i> <strong>Instructor</strong> <span>{{ course.instructor }}</span></li>
+                                    <li><i class="icofont-clock-time"></i> <strong>Duration</strong> <span>{{ course.duration }}</span></li>
+                                    <li><i class="icofont-ui-video-play"></i> <strong>Lectures</strong> <span>{{ course.lectures }}</span></li>
+                                    <li><i class="icofont-bars"></i> <strong>Level</strong> <span>{{ course.level }}</span></li>
+                                    <li><i class="icofont-book-alt"></i> <strong>Tanggal</strong> <span>{{ course.start_date }}</span></li>
+                                    <li><i class="icofont-certificate-alt-1"></i> <strong>Certificate</strong> <span>{% if course.certificate %}Yes{% else %}No{% endif %}</span></li>
+                                </ul>
+                            </div>
+                            <div class="info-btn">
+                                {% if messages %}
+                                    <div class="messages">
+                                        {% for message in messages %}
+                                        <div class="alert alert-{{ message.tags }}">
+                                            {{ message }}
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+                                {% if user.is_authenticated %}
+                                    {% if course.status == "CLOSED" %}
+                                    <button class="btn btn-secondary btn-hover-dark" disabled>Program Closed</button>
+                                    {% else %}
+                                    <a href="{% url 'enroll_course' course.id %}" class="btn btn-primary btn-hover-dark">Enroll Now</a>
+                                    {% endif %}
+                                {% else %}
+                                <a href="{% url 'login' %}?next={% url 'enroll_course' course.id %}" class="btn btn-primary btn-hover-dark">Login to Enroll</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <!-- Sidebar Widget Information End -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Courses End -->
+
+
+{% endblock %}

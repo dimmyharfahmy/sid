@@ -1,0 +1,11 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /login/
+Disallow: /media/
+Disallow: /static/
+Disallow: /settings/
+Disallow: /account/
+Disallow: /password_reset/
+Allow: /
+
+Sitemap: https://sidfoundation.or.id/sitemap.xml

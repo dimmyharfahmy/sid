@@ -1,0 +1,288 @@
+{% extends 'myapp/base.html' %}
+{% load static %}
+
+{% block title %}Home - Sedekah Inovasi Digital{% endblock %}
+
+{% block content %}
+    <!-- Overlay Start -->
+    <div class="overlay"></div>
+    <!-- Overlay End -->
+
+    <!-- Slider Start -->
+    <div class="section slider-section">
+        <!-- Slider Shape Start -->
+        <div class="slider-shape">
+            <img class="shape-1 animation-round" src="{% static 'myapp/images/shape/shape-8.png' %}" alt="Shape">
+        </div>
+        <!-- Slider Shape End -->
+
+        <div class="container">
+            <!-- Slider Content Start -->
+            <div class="slider-content">
+                <h4 class="sub-title"></h4>
+                <h2 class="main-title"> <span> Sedekah Inovasi Digital.</span></h2>
+                <p>Sebuah organisasi non-profit yang bekerja dalam menciptakan masyarakat Indonesia yang cerdas dan mandiri dengan memberikan edukasi digital terutama di bidang IT kepada setiap individu.</p>
+                <a class="btn btn-primary btn-hover-primary" href="{% static 'myapp/images/blog/profile_SID.pdf' %}">SIMAK PROFIL TERBARU (PDF) </a>
+            </div>
+            <!-- Slider Content End -->
+        </div>
+
+        <!-- Slider Images Start -->
+        <div class="slider-images">
+            <div class="images">
+                <img src="{% static 'myapp/images/slider/slider-2.png' %}" alt="Slider">
+            </div>
+        </div>
+        <!-- Slider Images End -->
+    </div>
+    <!-- Slider End -->
+
+    <!-- All Courses Start -->
+    <div class="section section-padding-02">
+        <div class="container">
+            <!-- All Courses Top Start -->
+            <div class="courses-top">
+                <!-- Section Title Start -->
+                <div class="section-title shape-01">
+                    <h2 class="main-title"><span>Program</span> Bootcamp SID</h2>
+                </div>
+                <!-- Section Title End -->
+                <!-- Courses Search Start -->
+                <!-- <div class="courses-search">
+                    <form action="#">
+                        <input type="text" placeholder="Search your course">
+                        <button><i class="flaticon-magnifying-glass"></i></button>
+                    </form>
+                </div> -->
+                <!-- Courses Search End -->
+            </div>
+            <!-- All Courses Top End -->
+
+            <!-- All Courses Tabs Menu Start -->
+            <div class="courses-tabs-menu courses-active">
+                <div class="swiper-container">
+                    <ul class="swiper-wrapper nav">
+                        <li class="swiper-slide"><button class="active" data-bs-toggle="tab" data-bs-target="#tabs1">Data Science</button></li>
+                        <li class="swiper-slide"><button data-bs-toggle="tab" data-bs-target="#tabs2">Laravel</button></li>
+                        <li class="swiper-slide"><button data-bs-toggle="tab" data-bs-target="#tabs3">Python</button></li>
+                        <li class="swiper-slide"><button data-bs-toggle="tab" data-bs-target="#tabs4">Microsoft .NET</button></li>
+                        <li class="swiper-slide"><button data-bs-toggle="tab" data-bs-target="#tabs5">Node.js</button></li>
+                        <li class="swiper-slide"><button data-bs-toggle="tab" data-bs-target="#tabs6">UI & UX</button></li>
+                        <li class="swiper-slide"><button data-bs-toggle="tab" data-bs-target="#tabs7">AI Prompter</button></li>
+                    </ul>
+                </div>
+                <div class="swiper-button-next"><i class="icofont-rounded-right"></i></div>
+                <div class="swiper-button-prev"><i class="icofont-rounded-left"></i></div>
+            </div>
+            <!-- All Courses Tabs Menu End -->
+
+            <!-- All Courses tab content Start -->
+            <div class="tab-content courses-tab-content">
+                <div class="tab-pane fade show active" id="tabs1">
+                    <!-- All Courses Wrapper Start -->
+                    <div class="courses-wrapper">
+                        <div class="row">
+                            {% for course in courses %}
+                            <div class="col-lg-4 col-md-6">
+                                <!-- Single Courses Start -->
+                                <div class="single-courses">
+                                    <div class="courses-images">
+                                        <a href="{% url 'course_detail' course.id %}"><img src="{{ course.course_image.url }}" alt="Courses"></a>
+                                    </div>
+                                    <div class="courses-content">
+                                        <div class="courses-author">
+                                            <div class="author">
+                                                <div class="author-thumb">
+                                                    <a href="{% url 'course_detail' course.id %}"><img src="{{ course.author_image.url }}" alt="Author"></a>
+                                                </div>
+                                                <div class="author-name">
+                                                    <a class="name" href="#">{{ course.author_name }}</a>
+                                                </div>
+                                            </div>
+                                            <div class="tag">
+                                                <a href="#">IT</a>
+                                            </div>
+                                        </div>
+                                        <h4 class="title"><a href="{% url 'course_detail' course.id %}">{{ course.title }}</a></h4>
+                                        <div class="courses-meta">
+                                            <span><i class="icofont-location-pin"></i><a href="https://maps.app.goo.gl/xXJ1K7tThaAnYa4t7" target="_blank">{{ course.location }}</a></span>
+                                            <span><i class="icofont-clock-time"></i>{{ course.duration }}</span>
+                                        </div>
+                                        <div class="courses-price-review">
+                                            <div class="courses-price">
+                                                <span class="sale-parice">{{ course.price }}</span>
+                                            </div>
+                                            <div class="courses-review">
+                                                {% if course.status == "CLOSED" %}
+                                                <span class="rating-count">CLOSED</span>
+                                                {% elif course.status == "OPEN" and course.countdown is not None %}
+                                                <span class="rating-count">Registrasi dibuka {{ course.countdown }} hari</span>
+                                                {% else %}
+                                                <span class="rating-count">{{ course.status }}</span>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Single Courses End -->
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <!-- All Courses Wrapper End -->
+                </div>
+            </div>
+            <!-- All Courses tab content End -->
+
+            <!-- All Courses BUtton Start -->
+            <div class="courses-btn text-center">
+                <a href="{% url 'courses' %}" class="btn btn-secondary btn-hover-primary">Program Lainnya</a>
+            </div>
+            <!-- All Courses BUtton End -->
+        </div>
+    </div>
+    <!-- All Courses End -->
+
+    <!-- Call to Action Start -->
+    <div class="section section-padding-02">
+        <div class="container">
+            <!-- Call to Action Wrapper Start -->
+            <div class="call-to-action-wrapper">
+                <img class="cat-shape-01 animation-round" src="{% static 'myapp/images/shape/shape-12.png' %}" alt="Shape">
+                <img class="cat-shape-02" src="{% static 'myapp/images/shape/shape-13.svg' %}" alt="Shape">
+                <img class="cat-shape-03 animation-round" src="{% static 'myapp/images/shape/shape-12.png' %}" alt="Shape">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <!-- Section Title Start -->
+                        <div class="section-title shape-02">
+                            <h5 class="sub-title">Mau Jadi Voluunter?</h5>
+                            <h2 class="main-title">Tertarik untuk menjadi bagian dari SID dan menjadi <span>Pengajar?</span></h2>
+                        </div>
+                        <!-- Section Title End -->
+                    </div>
+                    <div class="col-md-6">
+                        <div class="call-to-action-btn">
+                            <a class="btn btn-primary btn-hover-dark" href="{% url 'contact' %}">Gabung Sekarang</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Call to Action Wrapper End -->
+        </div>
+    </div>
+    <!-- Call to Action End -->
+
+    <!-- How It Work End -->
+    <div class="section section-padding mt-n1">
+        <div class="container">
+            <!-- Section Title Start -->
+            <div class="section-title shape-03 text-center">
+                <h2 class="main-title">Bagaimana cara <span> Prosesnya?</span></h2>
+            </div>
+            <!-- Section Title End -->
+            <!-- How it Work Wrapper Start -->
+            <div class="how-it-work-wrapper">
+                <!-- Single Work Start -->
+                <div class="single-work">
+                    <img class="shape-1" src="{% static 'myapp/images/shape/shape-15.png' %}" alt="Shape">
+                    <div class="work-icon">
+                        <i class="flaticon-transparency"></i>
+                    </div>
+                    <div class="work-content">
+                        <h3 class="title">Pilih Bootcamp</h3>
+                        <p>Pilih dari berbagai kursus pelatihan digital yang kami tawarkan.</p>
+                    </div>
+                </div>
+                <!-- Single Work End -->
+
+                <!-- Single Work Start -->
+                <div class="work-arrow">
+                    <img class="arrow" src="{% static 'myapp/images/shape/shape-17.png' %}" alt="Shape">
+                </div>
+                <!-- Single Work End -->
+
+                <!-- Single Work Start -->
+                <div class="single-work">
+                    <img class="shape-2" src="{% static 'myapp/images/shape/shape-15.png' %}" alt="Shape">
+                    <div class="work-icon">
+                        <i class="flaticon-forms"></i>
+                    </div>
+                    <div class="work-content">
+                        <h3 class="title">Ujian Seleksi</h3>
+                        <p>Ikuti ujian seleksi untuk memastikan kesiapan Anda.</p>
+                    </div>
+                </div>
+                <!-- Single Work End -->
+
+                <!-- Single Work Start -->
+                <div class="work-arrow">
+                    <img class="arrow" src="{% static 'myapp/images/shape/shape-17.png' %}" alt="Shape">
+                </div>
+                <!-- Single Work End -->
+
+                <!-- Single Work Start -->
+                <div class="single-work">
+                    <img class="shape-3" src="{% static 'myapp/images/shape/shape-16.png' %}" alt="Shape">
+                    <div class="work-icon">
+                        <i class="flaticon-badge"></i>
+                    </div>
+                    <div class="work-content">
+                        <h3 class="title">Sertifikat</h3>
+                        <p>Terima sertifikat sebagai bukti kelulusan dan skillset Anda.</p>
+                    </div>
+                </div>
+                <!-- Single Work End -->
+            </div>
+        </div>
+    </div>
+    <!-- How It Work End -->
+
+    <!-- Testimonial End -->
+    <div class="section section-padding-02 mt-n1">
+        <div class="container">
+            <!-- Section Title Start -->
+            <div class="section-title shape-03 text-center">
+                <h5 class="sub-title">SID Testimonial</h5>
+                <h2 class="main-title">Testimoni dari <span> Peserta</span></h2>
+            </div>
+            <!-- Section Title End -->
+            <!-- Testimonial Wrapper End -->
+            <div class="testimonial-wrapper testimonial-active">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <!-- Single Testimonial Start -->
+                        {% for testimonial in testimonials %}
+                        <div class="single-testimonial swiper-slide">
+                            <div class="testimonial-author">
+                                <div class="author-thumb">
+                                    <img src="{{ testimonial.testi_image.url }}" alt="Author">
+                                    <i class="icofont-quote-left"></i>
+                                </div>
+                                <span class="rating-star">
+                                    <span class="rating-bar" style="width: {{ testimonial.testi_rating }}%;"></span>
+                                </span>
+                            </div>
+                            <div class="testimonial-content">
+                                <p>{{ testimonial.testi_content }}</p>
+                                <h4 class="name">{{ testimonial.testi_name }}</h4>
+                                <span class="designation">{{ testimonial.testi_designation }}</span>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        <!-- Single Testimonial End -->
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+            <!-- Testimonial Wrapper End -->
+        </div>
+    </div>
+    <!-- Testimonial End -->
+
+    <!-- Brand Logo Start -->
+    <div class="section section-padding">
+        
+    </div>
+    <!-- Brand Logo End -->
+
+{% endblock %}
